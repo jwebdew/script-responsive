@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반응형 스크립트</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Ga+Maamli&display=swap');
+        /* .ga-maamli-regular {
+                font-family: "Ga Maamli", sans-serif;
+                font-weight: 400;
+                font-style: normal;
+            }
+        */
+
+        @import url('https://fonts.googleapis.com/css2?family=Geist+Mono&display=swap');
+        /* // <uniquifier>: Use a unique and descriptive class name
+
+        .geist-mono-<uniquifier> {
+        font-family: "Geist Mono", monospace;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        } */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        :root {
+            
+        }
+        body {
+            color: #333;
+            font-family: "Geist Mono", monospace;
+            font-size: 18px;
+            cursor: default;
+        }
+        .inner {
+            max-width: 1280px;
+            width: calc(100% - 32px);
+            margin: 160px auto;
+        }
+        h2 {
+            font-size: 60px;
+            font-family: "Ga Maamli", sans-serif;
+            margin-bottom: 40px; 
+        }
+        h3 {
+            font-family: "Ga Maamli", sans-serif;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .section-01 {
+
+        }
+        .section-01 .tab_menu {
+            display: flex;
+            gap: 20px;
+             
+        }
+        .section-01 .tab_menu li.active {
+            color: #c34a36;
+            text-decoration: underline;
+            text-underline-offset: 6px;
+        }
+        .section-01 .item_wrap {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            display: none;
+        }
+        .section-01 .item_wrap .item {
+            width: 48%;
+            background-color: #4b4453;
+            color: #fff;
+            border-radius: 20px;
+            padding: 30px;
+        }
+        .section-01 .item_wrap.active {
+            display: flex;
+        }
+
+        .section-02 .inner .item {
+            display: flex;
+            justify-content: space-between;
+        }
+        .section-02 .inner img {
+            width: 100%;
+        }
+        .section-02 .inner .detail_item {
+            width: 48%;
+        }
+        .section-02 .inner .detail_item .image {
+            height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .section-02 .inner .detail_item .image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .section-02 .inner .detail_item .text {
+            margin-top: 30px;
+        }
+        .section-02 .inner .item_wrap  {
+            width: 49%;
+            gap: 20px;
+            display: flex;
+            flex-direction: column;
+            /* justify-content: space-between; */
+        }
+        .section-02 .inner .item_wrap .item {
+            background-color: #d5cabd;
+            padding: 20px;
+            border-radius: 20px;
+
+        }
+        .section-02 .inner .item_wrap .item.active {
+            /* border: 2px solid #4b4453; */
+            background-color: #4b4453;
+            color: #d5cabd;
+        }
+        .section-02 .inner .item_wrap .item img{
+            display: none;
+        }
+        .section-02 .inner .item_wrap .item .text p {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+        }
+
+        .section-03 ul li {
+            margin: 20px 0;
+        }
+        .section-03 ul li strong {
+            background-color: #f5f5f5;
+            border: 1px solid #d5cabd;
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+             
+        }
+        .section-03 ul li strong::after {
+            content: '^';
+            display: inline-block;
+            transform: rotate(180deg); 
+            font-size: 25px;
+        }
+        .section-03 ul li p {
+            background-color: #d5cabd;
+            margin-top: 8px;
+            line-height: 1.5;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            display: none;
+        }
+        .section-03 ul li strong.active::after {
+            transform: rotate(0);
+        }
+        .section-03 ul li strong.active {
+            /* background-color: #4b4453; */
+            border: 1px solid #4b4453;
+            display: flex;
+            /* color: #fff; */
+        }
+        .section-03 ul li p.on {
+            display: block;
+        }
+
+        @media screen and (max-width:640px) {
+            body {font-size: 16px;}
+            h3 {font-size: 28px;}
+            h2 {font-size: 40px; margin-bottom: 20px;}
+            .section-01 .item_wrap {flex-direction: column; gap: 16px;}
+            .section-01 .item_wrap .item {width: 100%;}
+
+            .section-02 .inner .item {
+                flex-direction: column;
+            }
+            .section-02 .inner .detail_item {
+                width: 100%;
+                order: 2;
+            }
+            .section-02 .inner .item_wrap {
+                width: 100%;
+                flex-direction: row;
+                gap: 12px;
+                margin-bottom: 20px;
+            }
+            .section-02 .inner .item_wrap .item {
+                width: calc(100% / 3 - 10px);
+                text-align: center;
+            }
+            .section-02 .inner .item_wrap .item .text h3 {margin: 0; font-size: 20px;}
+            .section-02 .inner .item_wrap .item .text p {
+                display: none;
+            }
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            let body = document.querySelector('body');
+
+            let section1 = document.querySelector('.section-01');
+            let sectionMenu = section1.querySelectorAll('.tab_menu li');
+            let sectionItem = section1.querySelectorAll('.item_wrap');
+
+            for(let i = 0; i < sectionMenu.length; i++) {
+                sectionMenu[i].addEventListener('click', () => {
+
+                    sectionMenu.forEach(item1 => {
+                        item1.classList.remove('active');
+                    })
+                    sectionMenu[i].classList.add('active');
+
+                    sectionItem.forEach(item1 => {
+                        item1.classList.remove('active');
+                    })
+                    sectionItem[i].classList.add('active');
+
+
+                    
+                });
+
+
+            };//for
+
+            let section2 = document.querySelector('.section-02');
+            let detailItemImage = section2.querySelector('.detail_item img');
+            let detailItemTitle = section2.querySelector('.detail_item h3');
+            let detailItemText = section2.querySelector('.detail_item p');
+
+            let item = section2.querySelectorAll('.item_wrap .item');
+            let itemImage = section2.querySelectorAll('.item_wrap .item img');
+            let itemTitle = section2.querySelectorAll('.item_wrap .item h3');
+            let itemText = section2.querySelectorAll('.item_wrap .item p');
+
+
+            function itemListWrap(itemIndex){
+             
+                item.forEach(item2 => {
+                        item2.classList.remove('active');
+                    })
+                    item[itemIndex].classList.add('active');
+
+                    detailItemImage.src = itemImage[itemIndex].src;
+                    detailItemTitle.innerHTML = itemTitle[itemIndex].innerHTML;
+                    detailItemText.innerHTML = itemText[itemIndex].innerHTML;
+            }
+            for(let i = 0; i < item.length; i++) {
+               /*  item[i].addEventListener('mouseenter', () => {
+                    item.forEach(item2 => {
+                        item2.classList.remove('active');
+                    })
+                    item[i].classList.add('active');
+
+                    detailItemImage.src = itemImage[i].src;
+                    detailItemTitle.innerHTML = itemTitle[i].innerHTML;
+                    detailItemText.innerHTML = itemText[i].innerHTML;
+                }) */
+               item[i].addEventListener('mouseenter', () => {
+                    itemListWrap([i]);
+               })
+               item[i].addEventListener('touch', () => {
+                    itemListWrap([i]);
+               })
+              
+
+            };//for
+
+            
+            let section3 = document.querySelector('.section-03')
+            let itemList = section3.querySelectorAll('.section-03 li strong');
+
+          
+
+            for(let i = 0; i < itemList.length; i++) {
+                itemList[i].addEventListener('click', () => {
+                    itemList[i].classList.toggle('active');
+                    itemList[i].nextElementSibling.classList.toggle('on');
+                })
+            }
+         
+            
+        }
+    </script>
+</head>
+
+<body>
+    <main class="main">
+      <!--   <section class="main_visual">
+            <img src="img/image-01.jpg" alt="">
+        </section> -->
+        <section class="section-01">
+            <div class="inner">
+                <h2>section 😊</h2>
+                <ul class="tab_menu">
+                    <li class="active">menu01</li>
+                    <li>menu02</li>
+                    <li>menu03</li>
+                </ul>
+
+                <div class="item_wrap active">
+                    <div class="item">
+                        <a href="#">
+                            <h3>menu01 title</h3>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel, illo culpa quidem itaque
+                                maxime deleniti vero, sunt distinctio, ab porro dignissimos voluptatum recusandae fuga
+                                officiis! Ullam obcaecati omnis aliquam autem.</p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#">
+                            <h3>menu01 title</h3>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel, illo culpa quidem itaque
+                                maxime deleniti vero, sunt distinctio, ab porro dignissimos voluptatum recusandae fuga
+                                officiis! Ullam obcaecati omnis aliquam autem.</p>
+                        </a>
+                    </div>
+                </div><!-- .item_wrap end -->
+
+                <div class="item_wrap">
+                    <div class="item">
+                        <a href="#">
+                            <h3>menu02 title</h3>
+                           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto fugiat expedita asperiores facilis quo cum exercitationem ipsa. Quidem optio quod nobis laboriosam, id mollitia est ratione unde rem veniam vitae!</p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#">
+                            <h3>menu02 title</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto fugiat expedita asperiores facilis quo cum exercitationem ipsa. Quidem optio quod nobis laboriosam, id mollitia est ratione unde rem veniam vitae!</p>
+                        </a>
+                    </div>
+                </div><!-- .item_wrap end -->
+
+                <div class="item_wrap">
+                    <div class="item">
+                        <a href="#">
+                            <h3>menu03 title</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, optio a doloribus expedita eos necessitatibus dicta deleniti magnam fuga! Neque consectetur eum illo. Illo cum excepturi adipisci cumque, labore eaque!</p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#">
+                            <h3>menu03 title</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, optio a doloribus expedita eos necessitatibus dicta deleniti magnam fuga! Neque consectetur eum illo. Illo cum excepturi adipisci cumque, labore eaque!</p>
+                        </a>
+                    </div>
+                </div><!-- .item_wrap end -->
+            </div><!-- inner -->
+        </section><!-- section-01 end -->
+
+        <section class="section-02">
+            <div class="inner">
+                <h2>section 💎</h2>
+                <div class="item">
+                    <div class="detail_item">
+                        <div class="image">
+                            <img src="img/bg-image-01.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>item-01</h3>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel, illo culpa quidem itaque
+                                maxime deleniti vero, sunt distinctio, ab porro dignissimos voluptatum recusandae fuga
+                                officiis! Ullam obcaecati omnis aliquam autem.</p>
+                        </div>
+                    </div><!-- .detail -->
+                    <div class="item_wrap">
+                        <div class="item active">
+                            <div class="image">
+                                <img src="img/bg-image-01.jpg" alt="">
+                            </div>
+                            <div class="text">
+                                <h3>item-01</h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam nihil cum quas deserunt fugiat quidem tempora quis sed magni cumque, in ipsum blanditiis cupiditate, voluptates ipsam enim expedita harum dolor?</p>
+                            </div>
+                        </div><!-- item -->
+                        <div class="item">
+                            <div class="image">
+                                <img src="img/bg-image-02.jpg" alt="">
+                            </div>
+                            <div class="text">
+                                <h3>item-02</h3>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias aperiam ea tenetur quasi, officiis itaque, consequuntur esse, commodi facere dolores distinctio perferendis optio et odio corporis voluptates vero ab dolorum.</p>
+                            </div>
+                        </div><!-- item -->
+                        <div class="item">
+                            <div class="image">
+                                <img src="img/bg-image-03.jpg" alt="">
+                            </div>
+                            <div class="text">
+                                <h3>item-03</h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde iure earum pariatur hic aut magni. Cum eligendi ipsa hic expedita nisi, in aperiam fugit laudantium dolor perspiciatis. Debitis, similique inventore.</p>
+                            </div>
+                        </div><!-- item -->
+                    </div><!-- item_wrap -->
+                </div>
+            </div><!-- .inner end -->
+        </section><!-- .section-02 -->
+
+        <section class="section-03">
+            <div class="inner">
+                <h2>section 📝</h2>
+                <ul>
+                    <li>
+                        <strong class="active">Lorem ipsum dolor sit amet</strong> 
+                        <p class="on">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quae dolorum deleniti, soluta voluptatibus eius velit odit veniam minima, eveniet amet quo! Provident eaque pariatur animi quisquam veniam autem quasi.</p>
+                    </li>
+                    <li>
+                        <strong>Lorem ipsum dolor sit amet</strong>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quae dolorum deleniti, soluta voluptatibus eius velit odit veniam minima, eveniet amet quo! Provident eaque pariatur animi quisquam veniam autem quasi.</p>
+                    </li>
+                    <li>
+                        <strong>Lorem ipsum dolor sit amet</strong>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quae dolorum deleniti, soluta voluptatibus eius velit odit veniam minima, eveniet amet quo! Provident eaque pariatur animi quisquam veniam autem quasi.</p>
+                    </li>
+                    <li>
+                        <strong>Lorem ipsum dolor sit amet</strong>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quae dolorum deleniti, soluta voluptatibus eius velit odit veniam minima, eveniet amet quo! Provident eaque pariatur animi quisquam veniam autem quasi.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
